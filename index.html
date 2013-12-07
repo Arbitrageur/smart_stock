@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8" />
+<style>
+  html, body {
+  height: 100%;
+  }
+  
+body {
+    margin:0;
+    padding:0;
+    border: 0;
+    font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.x.axis path {
+    display: none;
+}
+
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.menuitem {
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-weight: 100;
+    color: white;
+}
+
+.toggleBtn {
+    vertical-align: middle;
+    width: 6em;
+    height: 1.2em;
+    float: left;
+    margin: 2px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 2px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #FFFFFF;
+    font-family: Helvetica Neue;
+    font-weight: 200;
+    font-size: 12px;
+}
+
+.toggleBtnUnchecked {
+    color: white;
+    background-color: #000633;
+    cursor: pointer;
+}
+
+.toggleBtnChecked {
+    color: #474747;
+    background-color: white;
+    cursor: default;
+}
+
+.infotext-large {
+    font-family: Helvetica Neue;
+    font-size: 24px;
+    font-weight: 100;
+    color: white;
+}
+
+.infotext-small {
+    font-family: Helvetica Neue;
+    font-size: 16px;
+    font-weight: 100;
+    color: white;
+}
+
+td {
+    border:none;
+}
+
+.container {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.left_menu {
+  background-color:#0F8500;
+  width: 300px;
+  margin-left: -350px;
+  padding: 10px;
+  height: 100%;
+  float: right;
+}
+
+.chart {
+  background-color: blue;
+  width: 100%;
+  height: 40%;
+  float: right;
+  margin-right: 320px;
+}
+
+.contents {
+  float:right;
+  background-color: yellow;
+  width: 100%;
+  height: 60%;
+  margin-right: 320px;
+}
+
+.verticalSpacing {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 10px;
+}
+</style>
+<script src="http://d3js.org/d3.v3.js" charset="utf-8"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="js/highstock.js"></script>
+<script src="js/modules/exporting.js"></script>
+<!-- 
+<script type="text/javascript" src="http://play.influxdb.org/javascripts/influxdb.js"></script>
+<script src="js/gviz-api.js"></script>
+
+    background-color: #0A40FF;
+color index start : E53B00
+end : 008DBF
+http://www.perbang.dk/rgbgradient/
+ -->
+<body>
+<div class='container'>
+  <div class='left_menu'>
+    <span class='menuitem'>SORT BY:</span>
+    <div id='sortbutton' align='center' style='width:300px'>
+      <div align='center' id='sortbyret' class='toggleBtn toggleBtnUnchecked'>1D Return</div>
+      <div align='center' id='sortbyta' class='toggleBtn toggleBtnUnchecked'>Trade Amt</div>
+      <div align='center' id='sortbymc' class='toggleBtn toggleBtnUnchecked'>Market Cap</div>
+      <div align='center' id='sortbynone' class='toggleBtn toggleBtnChecked'>None</div>
+    </div>
+    <div class='verticalSpacing'></div>
+    <span class='menuitem'>FILTER BY:</span>
+    <div id='filterbutton' align='center' style='width:300px'>
+      <div align='center' id='filterK200' class='toggleBtn toggleBtnUnchecked'>KOSPI200</div>
+      <div align='center' id='filterK100' class='toggleBtn toggleBtnUnchecked'>KRX100</div>
+      <div align='center' id='filterNone' class='toggleBtn toggleBtnChecked'>None</div>
+    </div>
+  </div>
+  <div class='chart'></div>
+  <div class='contents'></div>
+</div>
+<!--
+<div id='info-container' style='position:absolute;z-index:2;background-color: white;visibility: hidden'>
+<div>
+    <button id='btnLine' style='disabled: true'>Close</button>
+</div>
+<div id='info' style='width:1000px;height:600px;background-color: white;'></div>
+</div>
+-->
+</body>
+<script>
+</script>
